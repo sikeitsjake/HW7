@@ -1,0 +1,16 @@
+In general, the ASM code and the C++ code both have defined sections in which certain operations happen. For example, the C++
+code has the defined function "addMatracies". When looking at the ASM code, there is a section that is named similarly, 
+"__ZN15MatrixFunctions12addMatraciesEPiS0_S0_" which is what I assume is the code that functions the same as the C++ addMatracies
+function. The ASM code barely has any readable syntax. If you dont know how to read ASM, there is basically no way
+of figuring out what is going on. The ASM also has a "main" entry point just like the C++ and C files.
+
+For the addmatsSimple.c file, you can see in the ASM file that at the bottom of main there is a jump to L2. L2 in this case
+starts with a comparison of two registers, which if the compare is less than or equal, it will jump to L3, which is doing the math, and
+acessing the registers where the array indecies are stored, then will move the index to some other register, presumably to the next item.
+If the comparison of the two registers is false, then it leaves the loop, and returns to main, which in turn ends the program.
+
+The same can be said for the addmatsSubr.c file. There is a global function called addMatracies which is saved in some registry.
+it does the jumps and the comparison for the for loop as well.
+
+Overall, the ASM code has all of the same functions and logic needed to allow the code to work as intended, just in a more 
+obscure way than we are used to seeing at this point.
